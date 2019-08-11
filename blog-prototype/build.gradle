@@ -1,0 +1,46 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
+    id 'java'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.telly.blog'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+//修改 Maven 的中央仓库 为 阿里云
+repositories {
+    //mavenCentral()
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+}
+
+// 依赖关系
+dependencies {
+    // 该依赖对于编译发行是必须的
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-cache'
+    // 添加 Thymeleaf 依赖
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    // 添加 Spring Data JPA 依赖
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    // 添加 MySQL 连接驱动的依赖
+    implementation 'mysql:mysql-connector-java:6.0.5'
+    // 添加 H2 的依赖
+    runtime 'com.h2database:h2:1.4.193'
+    // layout 布局依赖
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+    // nekohtml 依赖包, 避免严格的 HTML5 检查
+    implementation 'net.sourceforge.nekohtml:nekohtml'
+    // 添加 Spring Data ElasticSearch 的依赖
+    implementation 'org.springframework.boot:spring-boot-starter-data-elasticsearch'
+    // 添加 JNA 依赖
+    implementation 'net.java.dev.jna:jna:4.3.0'
+    // 添加 Apache commons lang 依赖
+    implementation 'org.apache.commons:commons-lang3:3.8.1'
+    // 该依赖对于编译测试是必须的，默认包含编译产品依赖和编译时依赖
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    
+}

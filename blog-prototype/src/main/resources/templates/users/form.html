@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="~{fragments/header :: header}"></head>
+<body>
+<div class="container blog-content-container">
+    <h3 th:text="${title}">telly</h3>
+    <!-- th:action="/users" 和 action="/users" 相同，前者可以省略 -->
+    <form th:action="@{/users}" method="post" th:object="${user}">
+        <!--    th:value="*{id}" 选择表达式，等价于 user.id -->
+        <input type="hidden" name="id" th:value="*{id}">
+        名称：<br>
+        <input class="form-control" type="text" name="name" th:value="*{name}">
+        邮箱：<br>
+        <input class="form-control" type="text" name="email" th:value="*{email}">
+        <input class="btn badge-default" type="submit" value="提交">
+    </form>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+</body>
+</html>
